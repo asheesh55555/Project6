@@ -1,0 +1,66 @@
+<p>
+  <strong>name:</strong>
+  <%= @product.name %>
+</p>
+ 
+<p>
+  <strong>description:</strong>
+  <%= @product.description %>
+</p>
+ 
+<p>
+  <strong>location:</strong>
+  <%= @product.location %>
+</p>
+ 
+<p>
+  <strong>category_id:</strong>
+  <%= @product.category.name %>
+</p>
+ 
+
+<p>
+  <strong>images:</strong>
+  <%=image_tag @product.images %>
+</p>
+ 
+ <p>
+  <strong>user_id:</strong>
+  <%= @product.user.email %>
+</p>
+
+
+
+
+
+<h2>Comments</h2>
+<% @product.comments.each do |comment| %>
+  <p>
+    <strong>Title:</strong>
+    <%= comment.title %>
+  </p>
+
+  
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.comment %>
+  </p>
+  
+<% end %>
+
+
+<h2>Add a comment:</h2>
+<%= form_for([@product, @product.comments.build]) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
